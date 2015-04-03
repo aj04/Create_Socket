@@ -1,0 +1,18 @@
+For Implementing TCP Socket :
+
+- Created a java class Client which would take arguements from the script client as Port No, Host_Name , Neu_id
+
+- Created a socket with the given details.
+
+- Send the Hello Message and received the arithmetic question and solved it uptill I received the Secret Flag
+
+
+For implementing SSL :
+
+- Created a trust manager that does not validate certificate chains by overriding Validating functions with Null or true for All instances.
+
+-Installed all-trusting trust manager which we created above.
+
+-Created an ssl socket factory with our all-trusting manager and set the connection object to use our socket factory which bypasses security checks.
+
+- Send Hello message and keeping interacting untill Secret key has been retrieved.

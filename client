@@ -1,0 +1,65 @@
+#!/bin/bash
+
+if [ "$1" = "-p" ] 
+then
+	if [ "$2" = "27993" ] 
+	then 
+		if [ "$3" = "-s" ]
+		then
+		    echo "given port is not open for TCP or SSL Connection" 
+		    exit
+		fi
+	        port=$2
+		host=$3
+		NEU_ID=$4
+	else
+		if [ "$2" = "27994" ]
+		then
+			if [ "$3" = "-s" ]
+                	then
+		  	  	port=$2
+		    		host=$4
+		    		NEU_ID=$5
+			else
+				echo "given port is not open for TCP"
+				exit
+			fi
+		else
+		    echo "port is not appropriate"
+		    exit
+		fi
+	fi
+		
+elif [ "$1" = "-s" ]
+	then
+	if [ "$2" = "-p" ] 
+		then
+		   if [ "$3" = "27993" ]
+	  		 then echo "port is not open for SSL"
+			 exit
+	   	   else
+			if [ "$3" = "27994" ]
+	    		then
+				port=$3
+				host=$4
+				NEU_ID=$5
+			else
+				echo "port is not open for SSL"				
+				exit
+           	    	fi
+		   fi
+	else
+	   port=27994
+	   host=$2
+	   NEU_ID=$3
+	   #echo " port is for SSL " 
+           #exit
+	fi
+else	
+	port=27993
+	host=$1
+	NEU_ID=$2
+fi
+make
+java Client "$port" "$host" "$NEU_ID"
+#  echo " port is $port and host is $host and Neu_id is $NEU_ID"
